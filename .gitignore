@@ -571,4 +571,8 @@ $RECYCLE.BIN/
 *.msp
 
 # Windows shortcuts
+<<<<<<< HEAD
 *.lnk
+=======
+*.lnk
+>>>>>>> 61c422bcde324c27c24f666d2bc7480aa01ffb58
