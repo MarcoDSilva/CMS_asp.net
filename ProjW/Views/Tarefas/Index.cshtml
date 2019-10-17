@@ -1,0 +1,114 @@
+﻿@model IEnumerable<ProjW.Models.Tarefa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<header>
+    <style>
+        .semClasse ul{
+            list-style: none;
+            font-size: 13px;
+            float: right;
+        }
+
+            .semClasse ul li {
+                float: left;
+                margin-left: 10px;
+            }
+
+            .butone {
+                float:right;
+            }
+    </style>
+</header>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <div class="semClasse text-justify">
+        <ul >
+            <li>@Html.RadioButton("options", "All", true) <label> Mostrar Todas</label></li>
+            <li>@Html.RadioButton("options", "Finished")<label> Terminadas</label></li>
+            <li>@Html.RadioButton("options", "OnGoing")<label> Não terminadas</label></li>
+        </ul>
+
+        <input type="submit" name="btn_update" value="update" class="btn btn-info butone" />
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.NomeCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataRegisto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataLimite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SujeitaCoima)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoImportancia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descritivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.NomeCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRegisto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLimite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SujeitaCoima)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoImportancia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descritivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
