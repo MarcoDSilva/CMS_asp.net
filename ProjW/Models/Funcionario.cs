@@ -6,17 +6,13 @@ using System.Web;
 
 namespace ProjW.Models
 {
-    public class Cliente
+    public class Funcionario
     {
         public int Id { get; set; }
 
         [Display(Name = "Nome")]
-        public string NomeCliente { get; set; }
-        [Display(Name = "Cód. Interno")]
-        public int CodigoInternoCliente { get; set; }
+        public string NomeFuncionario { get; set; }
 
-        //connect to Tarefas table
         public ICollection<Tarefa> Tarefas { get; set; }
-        
     }
 }

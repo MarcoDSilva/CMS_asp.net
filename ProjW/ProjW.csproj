@@ -123,32 +123,21 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Clientes\Create.cshtml" />
-    <Content Include="Views\Clientes\Delete.cshtml" />
-    <Content Include="Views\Clientes\Details.cshtml" />
-    <Content Include="Views\Clientes\Edit.cshtml" />
-    <Content Include="Views\Clientes\Index.cshtml" />
-    <Content Include="Views\Tarefas\Create.cshtml" />
-    <Content Include="Views\Tarefas\Delete.cshtml" />
-    <Content Include="Views\Tarefas\Details.cshtml" />
-    <Content Include="Views\Tarefas\Edit.cshtml" />
-    <Content Include="Views\Tarefas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\TarefasController.cs" />
-    <Compile Include="DAL\DbGesTarefas.cs" />
+    <Compile Include="DAL\MarcoSilvaDbGesTarefas.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910171050368_test1.cs" />
-    <Compile Include="Migrations\201910171050368_test1.Designer.cs">
-      <DependentUpon>201910171050368_test1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Funcionario.cs" />
+    <Compile Include="Models\LinhaDeTarefa.cs" />
     <Compile Include="Models\Tarefa.cs" />
+    <Compile Include="Models\TipoPrioridade.cs" />
+    <Compile Include="Models\TipoTarefa.cs" />
+    <Compile Include="MyUtil\ObterIdCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,12 +156,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
     <Folder Include="ViewModel\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910171050368_test1.resx">
-      <DependentUpon>201910171050368_test1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

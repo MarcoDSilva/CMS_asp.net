@@ -13,6 +13,19 @@ namespace ProjW.Models
         [Display(Name = "Título")]
         public string Titulo { get; set; }
 
+        [Display(Name = "Descrição Tarefa")]
+        public string DescritivoTarefa { get; set; }
+
+        [Display(Name = "Tarefa")]
+        public int TipoTarefaID { get; set; }
+        public virtual TipoTarefa TipoTarefa { get; set; }
+
+        public int ClienteId { get; set; }
+        public virtual Cliente Cliente { get; set; } //connecta
+
+        public int FuncionarioId { get; set; }
+        public virtual Funcionario Funcionario { get; set; } //connecta
+
         [Display(Name = "Equipa")]
         public string Equipa { get; set; }
 
@@ -30,13 +43,13 @@ namespace ProjW.Models
         public bool SujeitaCoima { get; set; }
 
         [Display(Name = "Prioridade")]
-        public string TipoImportancia { get; set; }
-
-        public string Descritivo { get; set; }
+        public string TipoPrioridadeId { get; set; }
+        public virtual TipoPrioridade TipoPrioridade { get; set; }
 
         public bool Estado { get; set; }
 
-        public int ClienteID { get; set; }
-        public virtual Cliente Cliente { get; set; }
+        public ICollection<LinhaDeTarefa> LinhaDeTarefas { get; set; }
+
+  
     }
 }
