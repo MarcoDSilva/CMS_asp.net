@@ -8,9 +8,11 @@ namespace ProjW.Models
 {
     public class TipoPrioridade
     {
-        public int Id;
+        public int Id { get; set; }
+
         [Display(Name = "Nível de Prioridade")]
-        public string DesignacaoPrioridade { get; set; }       
+        public string DesignacaoPrioridade { get; set; }  
+        
         public ICollection<Tarefa> Tarefas { get; set; }
     }
 }

@@ -13,13 +13,24 @@ namespace ProjW.Controllers
 {
     public class TarefasController : Controller
     {
-        private DbGesTarefas db = new DbGesTarefas();
+        private MarcoSilvaDbGesTarefas db = new MarcoSilvaDbGesTarefas();
 
         // GET: Tarefas
-        public ActionResult Index(string All, string Finished, string OnGoing )
+        public ActionResult Index(string terminos)
         {
-            var tarefas = db.Tarefas.Include(t => t.Cliente);
-            return View(tarefas.ToList());
+            if(string.IsNullOrEmpty(terminos))
+            {
+                ViewBag.btnTerminadas = "todas";
+            }
+
+            ViewBag.totalRegistos = "";
+            ViewBag.registosRecebidos = "";
+            //ViewBag.btnTerminadas = "";
+            ViewBag.btnCoima = "";
+
+
+            var tTarefas = db.TTarefas.Include(t => t.Cliente).Include(t => t.Funcionario).Include(t => t.TipoPrioridade).Include(t => t.TipoTarefa);
+            return View(tTarefas.ToList());
         }
 
         // GET: Tarefas/Details/5
@@ -29,7 +40,7 @@ namespace ProjW.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tarefa tarefa = db.Tarefas.Find(id);
+            Tarefa tarefa = db.TTarefas.Find(id);
             if (tarefa == null)
             {
                 return HttpNotFound();
@@ -40,7 +51,10 @@ namespace ProjW.Controllers
         // GET: Tarefas/Create
         public ActionResult Create()
         {
-            ViewBag.ClienteID = new SelectList(db.Clientes, "Id", "NomeCliente");
+            ViewBag.ClienteId = new SelectList(db.TClientes, "Id", "NomeCliente");
+            ViewBag.FuncionarioId = new SelectList(db.TFuncionarios, "Id", "NomeFuncionario");
+            ViewBag.TipoPrioridadeId = new SelectList(db.TTipoPrioridades, "Id", "DesignacaoPrioridade");
+            ViewBag.TipoTarefaID = new SelectList(db.TTiposTarefas, "Id", "DesignacaoTipoTarefa");
             return View();
         }
 
@@ -49,16 +63,19 @@ namespace ProjW.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Titulo,Equipa,DataRegisto,DataLimite,SujeitaCoima,TipoImportancia,Descritivo,Estado,ClienteID")] Tarefa tarefa)
+        public ActionResult Create([Bind(Include = "ID,Titulo,DescritivoTarefa,TipoTarefaID,ClienteId,FuncionarioId,Equipa,DataRegisto,DataLimite,SujeitaCoima,TipoPrioridadeId,Estado")] Tarefa tarefa)
         {
             if (ModelState.IsValid)
             {
-                db.Tarefas.Add(tarefa);
+                db.TTarefas.Add(tarefa);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClienteID = new SelectList(db.Clientes, "Id", "NomeCliente", tarefa.ClienteID);
+            ViewBag.ClienteId = new SelectList(db.TClientes, "Id", "NomeCliente", tarefa.ClienteId);
+            ViewBag.FuncionarioId = new SelectList(db.TFuncionarios, "Id", "NomeFuncionario", tarefa.FuncionarioId);
+            ViewBag.TipoPrioridadeId = new SelectList(db.TTipoPrioridades, "Id", "DesignacaoPrioridade", tarefa.TipoPrioridadeId);
+            ViewBag.TipoTarefaID = new SelectList(db.TTiposTarefas, "Id", "DesignacaoTipoTarefa", tarefa.TipoTarefaID);
             return View(tarefa);
         }
 
@@ -69,12 +86,15 @@ namespace ProjW.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tarefa tarefa = db.Tarefas.Find(id);
+            Tarefa tarefa = db.TTarefas.Find(id);
             if (tarefa == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClienteID = new SelectList(db.Clientes, "Id", "NomeCliente", tarefa.ClienteID);
+            ViewBag.ClienteId = new SelectList(db.TClientes, "Id", "NomeCliente", tarefa.ClienteId);
+            ViewBag.FuncionarioId = new SelectList(db.TFuncionarios, "Id", "NomeFuncionario", tarefa.FuncionarioId);
+            ViewBag.TipoPrioridadeId = new SelectList(db.TTipoPrioridades, "Id", "DesignacaoPrioridade", tarefa.TipoPrioridadeId);
+            ViewBag.TipoTarefaID = new SelectList(db.TTiposTarefas, "Id", "DesignacaoTipoTarefa", tarefa.TipoTarefaID);
             return View(tarefa);
         }
 
@@ -83,7 +103,7 @@ namespace ProjW.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Titulo,Equipa,DataRegisto,DataLimite,SujeitaCoima,TipoImportancia,Descritivo,Estado,ClienteID")] Tarefa tarefa)
+        public ActionResult Edit([Bind(Include = "ID,Titulo,DescritivoTarefa,TipoTarefaID,ClienteId,FuncionarioId,Equipa,DataRegisto,DataLimite,SujeitaCoima,TipoPrioridadeId,Estado")] Tarefa tarefa)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +111,10 @@ namespace ProjW.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ClienteID = new SelectList(db.Clientes, "Id", "NomeCliente", tarefa.ClienteID);
+            ViewBag.ClienteId = new SelectList(db.TClientes, "Id", "NomeCliente", tarefa.ClienteId);
+            ViewBag.FuncionarioId = new SelectList(db.TFuncionarios, "Id", "NomeFuncionario", tarefa.FuncionarioId);
+            ViewBag.TipoPrioridadeId = new SelectList(db.TTipoPrioridades, "Id", "DesignacaoPrioridade", tarefa.TipoPrioridadeId);
+            ViewBag.TipoTarefaID = new SelectList(db.TTiposTarefas, "Id", "DesignacaoTipoTarefa", tarefa.TipoTarefaID);
             return View(tarefa);
         }
 
@@ -102,7 +125,7 @@ namespace ProjW.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tarefa tarefa = db.Tarefas.Find(id);
+            Tarefa tarefa = db.TTarefas.Find(id);
             if (tarefa == null)
             {
                 return HttpNotFound();
@@ -115,8 +138,8 @@ namespace ProjW.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tarefa tarefa = db.Tarefas.Find(id);
-            db.Tarefas.Remove(tarefa);
+            Tarefa tarefa = db.TTarefas.Find(id);
+            db.TTarefas.Remove(tarefa);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

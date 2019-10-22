@@ -4,50 +4,74 @@
     ViewBag.Title = "Index";
 }
 
-<header>
-    <style>
-        .semClasse ul{
-            list-style: none;
-            font-size: 13px;
-            float: right;
-        }
-
-            .semClasse ul li {
-                float: left;
-                margin-left: 10px;
-            }
-
-            .butone {
-                float:right;
-            }
-    </style>
-</header>
-
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    <table class="table table-striped">
+        <tr>
+            <th>Cliente</th>
+            <th>Terminadas</th>
+            <th>Coima</th>
+            <th>Estatísticas</th>
+        </tr>
+        @{
+
+
+            <tr>
+                <th>Filtrar por nome de cliente:</th>
+                <td>@Html.RadioButton("terminos", "todas_terminos")<label> Todas</label></td>
+                <td>@Html.RadioButton("coimas", "todas_coimas")<label> Todas</label></td>
+                <td>Total de registos na tabela: x</td>
+            </tr>
+            <tr>
+                <td>@Html.TextArea("filtra_cliente")</td>
+                <td>@Html.RadioButton("terminos", "finalizadas")<label> Terminadas</label></td>
+                <td>@Html.RadioButton("coimas", "com_coima")<label> Com coima</label></td>
+                <td>Total de registos recebidos: x</td>
+            </tr>
+            <tr>
+                <td>Código do cliente encontrado: xx</td>
+                <td>@Html.RadioButton("terminos", "nao_finalizadas")<label> Não terminadas</label></td>
+                <td>@Html.RadioButton("coimas", "sem_coima")<label> Sem coima</label></td>
+                <td>O que está selecionado no radio_button terminadas: @ViewBag.btnTerminadas</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>O que está selecionado no radio_button coima: X</td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="envia_dados" class="btn btn-primary" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <br />
 </p>
-
-@using (Html.BeginForm())
-{
-    <div class="semClasse text-justify">
-        <ul >
-            <li>@Html.RadioButton("options", "All", true) <label> Mostrar Todas</label></li>
-            <li>@Html.RadioButton("options", "Finished")<label> Terminadas</label></li>
-            <li>@Html.RadioButton("options", "OnGoing")<label> Não terminadas</label></li>
-        </ul>
-
-        <input type="submit" name="btn_update" value="update" class="btn btn-info butone" />
-    </div>
-}
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Cliente.NomeCliente)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Funcionario.NomeFuncionario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoPrioridade.DesignacaoPrioridade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoTarefa.DesignacaoTipoTarefa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescritivoTarefa)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Equipa)
@@ -62,53 +86,52 @@
             @Html.DisplayNameFor(model => model.SujeitaCoima)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TipoImportancia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descritivo)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.NomeCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Equipa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataRegisto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataLimite)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SujeitaCoima)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoImportancia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descritivo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.NomeCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Funcionario.NomeFuncionario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoPrioridade.DesignacaoPrioridade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoTarefa.DesignacaoTipoTarefa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescritivoTarefa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataRegisto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataLimite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SujeitaCoima)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
 
 </table>

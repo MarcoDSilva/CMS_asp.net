@@ -17,11 +17,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("ProjW", "Index", "Tarefas", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Clientes", "Index", "Clientes", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @Html.ActionLink("ProjW", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Tarefas", "Index", "Tarefas", new { area = "" }, new { @class = "navbar-brand" })
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#"  aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">Tabelas Extras <span class="caret"></span></a>
+                        <ul class="dropdown-menu navbar-inverse">
+                            <li>@Html.ActionLink("Clientes", "Index", "Clientes", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("Funcionários", "Index", "Funcionarios", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("Tipo de tarefa", "Index", "TipoTarefas", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("Tipo de prioridade", "Index", "TipoPrioridades", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("Linha de tarefas", "Index", "LinhaDeTarefas", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

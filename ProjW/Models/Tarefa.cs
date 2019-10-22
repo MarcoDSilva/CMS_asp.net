@@ -43,9 +43,10 @@ namespace ProjW.Models
         public bool SujeitaCoima { get; set; }
 
         [Display(Name = "Prioridade")]
-        public string TipoPrioridadeId { get; set; }
+        public int TipoPrioridadeId { get; set; }
         public virtual TipoPrioridade TipoPrioridade { get; set; }
 
+        [Display(Name = "Finalizado?")]
         public bool Estado { get; set; }
 
         public ICollection<LinhaDeTarefa> LinhaDeTarefas { get; set; }

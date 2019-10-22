@@ -16,7 +16,9 @@ namespace ProjW.Models
 
         public DateTime DataDaLinha { get; set; }
 
-        public string Descritivo;        
+        public string Descritivo { get; set; }
+
+        public int TarefaId { get; set; }
         public virtual Tarefa Tarefa { get; set; }
     }
 }

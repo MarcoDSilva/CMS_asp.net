@@ -11,107 +11,107 @@ using ProjW.Models;
 
 namespace ProjW.Controllers
 {
-    public class ClientesController : Controller
+    public class TipoTarefasController : Controller
     {
         private MarcoSilvaDbGesTarefas db = new MarcoSilvaDbGesTarefas();
 
-        // GET: Clientes
+        // GET: TipoTarefas
         public ActionResult Index()
         {
-            return View(db.TClientes.ToList());
+            return View(db.TTiposTarefas.ToList());
         }
 
-        // GET: Clientes/Details/5
+        // GET: TipoTarefas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.TClientes.Find(id);
-            if (cliente == null)
+            TipoTarefa tipoTarefa = db.TTiposTarefas.Find(id);
+            if (tipoTarefa == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(tipoTarefa);
         }
 
-        // GET: Clientes/Create
+        // GET: TipoTarefas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Clientes/Create
+        // POST: TipoTarefas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,NomeCliente,CodigoInternoCliente")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "Id,DesignacaoTipoTarefa")] TipoTarefa tipoTarefa)
         {
             if (ModelState.IsValid)
             {
-                db.TClientes.Add(cliente);
+                db.TTiposTarefas.Add(tipoTarefa);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cliente);
+            return View(tipoTarefa);
         }
 
-        // GET: Clientes/Edit/5
+        // GET: TipoTarefas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.TClientes.Find(id);
-            if (cliente == null)
+            TipoTarefa tipoTarefa = db.TTiposTarefas.Find(id);
+            if (tipoTarefa == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(tipoTarefa);
         }
 
-        // POST: Clientes/Edit/5
+        // POST: TipoTarefas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NomeCliente,CodigoInternoCliente")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "Id,DesignacaoTipoTarefa")] TipoTarefa tipoTarefa)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cliente).State = EntityState.Modified;
+                db.Entry(tipoTarefa).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(cliente);
+            return View(tipoTarefa);
         }
 
-        // GET: Clientes/Delete/5
+        // GET: TipoTarefas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.TClientes.Find(id);
-            if (cliente == null)
+            TipoTarefa tipoTarefa = db.TTiposTarefas.Find(id);
+            if (tipoTarefa == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(tipoTarefa);
         }
 
-        // POST: Clientes/Delete/5
+        // POST: TipoTarefas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cliente cliente = db.TClientes.Find(id);
-            db.TClientes.Remove(cliente);
+            TipoTarefa tipoTarefa = db.TTiposTarefas.Find(id);
+            db.TTiposTarefas.Remove(tipoTarefa);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
