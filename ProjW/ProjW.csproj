@@ -128,6 +128,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\FiltrarLinhasDeTarefaController.cs" />
+    <Compile Include="Controllers\FiltrarTarefasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinhaDeTarefasController.cs" />
@@ -202,6 +204,16 @@
     <Content Include="Views\LinhaDeTarefas\Details.cshtml" />
     <Content Include="Views\LinhaDeTarefas\Edit.cshtml" />
     <Content Include="Views\LinhaDeTarefas\Index.cshtml" />
+    <Content Include="Views\FiltrarTarefas\Create.cshtml" />
+    <Content Include="Views\FiltrarTarefas\Delete.cshtml" />
+    <Content Include="Views\FiltrarTarefas\Details.cshtml" />
+    <Content Include="Views\FiltrarTarefas\Edit.cshtml" />
+    <Content Include="Views\FiltrarTarefas\Index.cshtml" />
+    <Content Include="Views\FiltrarLinhasDeTarefa\Create.cshtml" />
+    <Content Include="Views\FiltrarLinhasDeTarefa\Delete.cshtml" />
+    <Content Include="Views\FiltrarLinhasDeTarefa\Details.cshtml" />
+    <Content Include="Views\FiltrarLinhasDeTarefa\Edit.cshtml" />
+    <Content Include="Views\FiltrarLinhasDeTarefa\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

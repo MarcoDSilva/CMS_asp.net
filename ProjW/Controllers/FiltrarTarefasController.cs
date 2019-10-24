@@ -11,57 +11,37 @@ using ProjW.Models;
 
 namespace ProjW.Controllers
 {
-    public class TarefasController : Controller
+    public class FiltrarTarefasController : Controller
     {
         private MarcoSilvaDbGesTarefas db = new MarcoSilvaDbGesTarefas();
 
-        // GET: Tarefas
-        public ActionResult Index(string terminos, string coimas, string filtra_cliente)
+        // GET: FiltrarTarefas
+        public ActionResult Index(int? idDropList)
         {
-            var tTarefas = db.TTarefas.Include(t => t.Cliente).Include(t => t.Funcionario).Include(t => t.TipoPrioridade).Include(t => t.TipoTarefa);
-            ViewBag.totalRegistos = tTarefas.Count();
+            //a tabela clientes é passada para uma lista
+            List<Cliente> clientes = db.TClientes.ToList();
 
-            //============= filtra nome ====
-            if (!string.IsNullOrEmpty(filtra_cliente))
-            {
-                tTarefas = db.TTarefas.Where(c => c.Cliente.NomeCliente.Contains(filtra_cliente));
+            //essa lista é filtrada para uma SelectList , que recebe como argumento o Id e o Nome do cliente dessa mesma tabela
+            SelectList listItems = new SelectList(clientes, "Id", "NomeCliente");
 
-                if (tTarefas.Count() > 0) {
-                    ViewBag.idCliente = tTarefas.First().ClienteId;
-                }
-                else {
-                    tTarefas = db.TTarefas.Include(t => t.Cliente).Include(t => t.Funcionario).Include(t => t.TipoPrioridade).Include(t => t.TipoTarefa);
-                }
+            //a viewbag recebe a selectedlist, a qual recebe typecast razor da dropdownlist
+            ViewBag.Clientes = listItems;
 
+            if(!idDropList.HasValue) {
+                ViewBag.Id = "none";
+            } else  {
+                  ViewBag.Id = idDropList;
             }
 
-            // ======== RADIO BUTTONS ===========
-            if (!string.IsNullOrEmpty(terminos)) {
-                ViewBag.btnTerminadas = terminos;
+            //filtra a lista de tarefas  consoante o id do cliente e o id que vem da droplist
+            var tTarefas = db.TTarefas.Where(element => element.Cliente.Id == idDropList);
 
-                if(terminos.Equals("finalizadas")) {
-                    tTarefas = db.TTarefas.Where(a => a.Estado.Equals(true));
-                } else if (terminos.Equals("nao_finalizadas")) {
-                    tTarefas = db.TTarefas.Where(a => a.Estado.Equals(false));
-                } 
-            }
-
-            if(!string.IsNullOrEmpty(coimas)) {
-                ViewBag.btnCoima = coimas;
-
-                if(coimas.Equals("com_coima")) {
-                    tTarefas = db.TTarefas.Where(b => b.SujeitaCoima.Equals(true));
-                } else if(coimas.Equals("sem_coima")) {
-                    tTarefas = db.TTarefas.Where(b => b.SujeitaCoima.Equals(false));
-                }
-            }
-            //devolve os registos que estão actualmente a ser mostrados na view
-            ViewBag.registosRecebidos = tTarefas.Count();
+            ViewBag.LINHAS = tTarefas.Count();
 
             return View(tTarefas.ToList());
         }
 
-        // GET: Tarefas/Details/5
+        // GET: FiltrarTarefas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -76,7 +56,7 @@ namespace ProjW.Controllers
             return View(tarefa);
         }
 
-        // GET: Tarefas/Create
+        // GET: FiltrarTarefas/Create
         public ActionResult Create()
         {
             ViewBag.ClienteId = new SelectList(db.TClientes, "Id", "NomeCliente");
@@ -86,7 +66,7 @@ namespace ProjW.Controllers
             return View();
         }
 
-        // POST: Tarefas/Create
+        // POST: FiltrarTarefas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -107,7 +87,7 @@ namespace ProjW.Controllers
             return View(tarefa);
         }
 
-        // GET: Tarefas/Edit/5
+        // GET: FiltrarTarefas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -126,7 +106,7 @@ namespace ProjW.Controllers
             return View(tarefa);
         }
 
-        // POST: Tarefas/Edit/5
+        // POST: FiltrarTarefas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -146,7 +126,7 @@ namespace ProjW.Controllers
             return View(tarefa);
         }
 
-        // GET: Tarefas/Delete/5
+        // GET: FiltrarTarefas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -161,7 +141,7 @@ namespace ProjW.Controllers
             return View(tarefa);
         }
 
-        // POST: Tarefas/Delete/5
+        // POST: FiltrarTarefas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

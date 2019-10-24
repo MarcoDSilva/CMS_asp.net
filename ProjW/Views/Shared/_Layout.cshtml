@@ -33,6 +33,14 @@
                             <li>@Html.ActionLink("Linha de tarefas", "Index", "LinhaDeTarefas", new { area = "" }, new { @class = "navbar-brand" })</li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toogle" data-toggle="dropdown" href="#">Exercicios <span class="caret"></span></a>
+                        <ul class="dropdown-menu navbar-inverse">
+                            <li>@Html.ActionLink("A", "Index", "FiltrarTarefas", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("B", "Index", "FiltrarLinhasDeTarefa", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

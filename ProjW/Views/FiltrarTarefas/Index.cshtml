@@ -4,54 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Tarefas</h2>
+<h2>Selecionar cliente para verificar os registos do mesmo.</h2>
+
+<table>
+    @using (Html.BeginForm())
+    {
+        <tr>
+            <td>Selecione um cliente para filtrar a lista: </td>
+            <td>@Html.DropDownList("idDropList", (SelectList)ViewBag.Clientes, 
+               htmlAttributes: new { @class = "form-control", @onchange = "this.form.submit();" })</td>
+
+        </tr>
+        <tr>
+            <td>Número de linhas: @ViewBag.Linhas</td>
+            <td>Id do Cliente: @ViewBag.Id</td>
+        </tr>
+    }
+
+</table>
 
 <p>
     @Html.ActionLink("Create New", "Create")
-    <table class="table table-striped">
-        <tr>
-            <th>Cliente</th>
-            <th>Terminadas</th>
-            <th>Coima</th>
-            <th>Estatísticas</th>
-        </tr>
-
-        @using (Html.BeginForm())
-        {
-            <tr>
-                <th>Filtrar por nome de cliente:</th>
-                <td>@Html.RadioButton("terminos", "todas_terminos")<label> Todas</label></td>
-                <td>@Html.RadioButton("coimas", "todas_coimas")<label> Todas</label></td>
-                <td>Total de registos na tabela: @ViewBag.totalRegistos</td>
-            </tr>
-            <tr>
-                <td>@Html.TextArea("filtra_cliente")</td>
-                <td>@Html.RadioButton("terminos", "finalizadas")<label> Terminadas</label></td>
-                <td>@Html.RadioButton("coimas", "com_coima")<label> Com coima</label></td>
-                <td>Total de registos recebidos: @ViewBag.registosRecebidos</td>
-            </tr>
-            <tr>
-                <td>Código do cliente encontrado: @ViewBag.idCliente</td>
-                <td>@Html.RadioButton("terminos", "nao_finalizadas")<label> Não terminadas</label></td>
-                <td>@Html.RadioButton("coimas", "sem_coima")<label> Sem coima</label></td>
-                <td>radio_button terminadas: @ViewBag.btnTerminadas</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>radio_button coima: @ViewBag.btnCoima</td>
-            </tr>
-            <tr>
-                <td><input type="submit" name="envia_dados" class="btn btn-primary" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        }
-    </table>
-    <br />
-    <br />
 </p>
 <table class="table">
     <tr>
