@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProjW.Models.Tarefa>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Apagar Registos com Confirmação</h2>
+
+
+
+<div>
+    <label>Qual o id da tarefa a eliminar?</label>
+    @using (Html.BeginForm())
+    {
+        if (@ViewBag.verifica == 1)
+        {
+            <p>SURPRISE!</p>
+            <table>
+                @foreach(var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente)
+                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoTarefa)
+                    </td>
+                </tr>
+                }
+            </table>
+        }
+        <div>
+            @Html.TextBox("id_tarefa")
+            <input type="submit" name="name" value="confirmar" />
+        </div>
+
+        <p>enviaste a tarefa: @ViewBag.teste</p>
+
+    }
