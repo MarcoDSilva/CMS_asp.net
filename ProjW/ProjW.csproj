@@ -99,6 +99,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\teste.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -130,6 +131,7 @@
     <Compile Include="Controllers\ApagaRegistosController.cs" />
     <Compile Include="Controllers\ApagarRegistosComConfirmacaoController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ContaRegistosController.cs" />
     <Compile Include="Controllers\FiltrarClienteFuncController.cs" />
     <Compile Include="Controllers\FiltrarLinhasDeTarefaController.cs" />
     <Compile Include="Controllers\FiltrarTarefasController.cs" />
@@ -167,6 +169,8 @@
     <Compile Include="Models\TipoPrioridade.cs" />
     <Compile Include="Models\TipoTarefa.cs" />
     <Compile Include="MyUtil\ObterIdCliente.cs" />
+    <Compile Include="MyUtil\StringConnection.cs" />
+    <Compile Include="MyUtil\TarefasFuncs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +228,7 @@
     <Content Include="Views\FiltrarClienteFunc\Index.cshtml" />
     <Content Include="Views\ApagaRegistos\Index.cshtml" />
     <Content Include="Views\ApagarRegistosComConfirmacao\Index.cshtml" />
+    <Content Include="Views\ContaRegistos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

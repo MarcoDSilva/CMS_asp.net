@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Plz send halp!!!</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/teste.css" rel="stylesheet" type="text/css" />
+
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
@@ -41,6 +43,7 @@
                             <li>@Html.ActionLink("C - Filtrar tarefas por cliente/funcionario", "Index", "FiltrarClienteFunc", new { area = "" }, new { @class = "navbar-brand" })</li>
                             <li>@Html.ActionLink("D - Apagar tarefas por id", "Index", "ApagaRegistos", new { area = "" }, new { @class = "navbar-brand" })</li>
                             <li>@Html.ActionLink("E - Apagar tarefas por id c/ confirmação", "Index", "ApagarRegistosComConfirmacao", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("F - Contar registos", "Index", "ContaRegistos", new { area = "" }, new { @class = "navbar-brand" })</li>
                         </ul>
                     </li>
                 </ul>
