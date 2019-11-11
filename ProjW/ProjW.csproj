@@ -136,6 +136,8 @@
     <Compile Include="Controllers\FiltrarLinhasDeTarefaController.cs" />
     <Compile Include="Controllers\FiltrarTarefasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
+    <Compile Include="Controllers\F_ClientePorUrgenciaController.cs" />
+    <Compile Include="Controllers\F_TarefasFuncs_MesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinhaDeTarefasController.cs" />
     <Compile Include="Controllers\TarefasController.cs" />
@@ -172,6 +174,8 @@
     <Compile Include="MyUtil\StringConnection.cs" />
     <Compile Include="MyUtil\TarefasFuncs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ClienteTarefas.cs" />
+    <Compile Include="ViewModel\FuncionarioTarefas.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -229,6 +233,8 @@
     <Content Include="Views\ApagaRegistos\Index.cshtml" />
     <Content Include="Views\ApagarRegistosComConfirmacao\Index.cshtml" />
     <Content Include="Views\ContaRegistos\Index.cshtml" />
+    <Content Include="Views\F_TarefasFuncs_Mes\Index.cshtml" />
+    <Content Include="Views\F_ClientePorUrgencia\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -238,7 +244,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910220833546_first.resx">

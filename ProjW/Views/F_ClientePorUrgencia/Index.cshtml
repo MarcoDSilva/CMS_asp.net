@@ -1,0 +1,40 @@
+﻿@model ProjW.ViewModel.ClienteTarefas
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cliente por data e urgencia</h2>
+
+<table class="table table-bordered">
+    @foreach (var item in Model.Clientes)
+    {
+        <tr>
+            <td>@item.NomeCliente</td>
+            <td>@Html.ActionLink("Selecionar", "Index", new { id = item.Id })</td>
+        </tr>
+    }
+</table>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Nome Cliente</th>
+        <th>ID Cliente</th>
+        <th>Descritivo</th>
+        <th>ID Tarefa</th>
+        <th>Titulo Tarefa</th>
+        <th>Urgencia</th>
+    </tr>
+
+    @foreach (var tarefa in Model.Tarefas)
+    {
+        <tr>
+            <td>@tarefa.Cliente.NomeCliente</td>
+            <td>@tarefa.ClienteId</td>
+            <td>@tarefa.DescritivoTarefa</td>
+            <td>@tarefa.ID</td>
+            <td>@tarefa.Titulo</td>
+            <td>Urgente</td>
+        </tr>
+    }
+</table>

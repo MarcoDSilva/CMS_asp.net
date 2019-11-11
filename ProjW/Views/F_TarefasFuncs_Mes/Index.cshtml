@@ -1,0 +1,40 @@
+﻿@model ProjW.ViewModel.FuncionarioTarefas
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Filtra Tarefas por mes actual / funcionario</h2>
+
+<table class="table table-bordered">
+
+    @foreach (var item in Model.Funcionarios)  {
+        <tr>
+            <td>@item.NomeFuncionario</td>
+            <td>@Html.ActionLink("Select", "Index", new { id = item.Id })</td>
+        </tr>
+    }
+
+</table>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Nome Funcionario</th>
+        <th>ID Funcionario</th>
+        <th>Descritivo</th>
+        <th>ID Tarefa</th>
+        <th>Titulo Tarefa</th>
+    </tr>
+
+    @foreach (var tarefa in Model.Tarefas) {
+        if (tarefa.FuncionarioId == @ViewBag.id)  {
+            <tr>
+                <td>@tarefa.Funcionario.NomeFuncionario</td>
+                <td>@tarefa.FuncionarioId</td>
+                <td>@tarefa.DescritivoTarefa</td>
+                <td>@tarefa.ID</td>
+                <td>@tarefa.Titulo</td>
+            </tr>
+        }
+    }
+</table>

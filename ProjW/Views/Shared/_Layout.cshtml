@@ -26,13 +26,14 @@
                     @Html.ActionLink("ProjW", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                     @Html.ActionLink("Tarefas", "Index", "Tarefas", new { area = "" }, new { @class = "navbar-brand" })
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="#"  aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">Tabelas Extras <span class="caret"></span></a>
+                        <a class="dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">Tabelas Extras <span class="caret"></span></a>
                         <ul class="dropdown-menu navbar-inverse">
                             <li>@Html.ActionLink("Clientes", "Index", "Clientes", new { area = "" }, new { @class = "navbar-brand" })</li>
                             <li>@Html.ActionLink("Funcionários", "Index", "Funcionarios", new { area = "" }, new { @class = "navbar-brand" })</li>
                             <li>@Html.ActionLink("Tipo de tarefa", "Index", "TipoTarefas", new { area = "" }, new { @class = "navbar-brand" })</li>
                             <li>@Html.ActionLink("Tipo de prioridade", "Index", "TipoPrioridades", new { area = "" }, new { @class = "navbar-brand" })</li>
                             <li>@Html.ActionLink("Linha de tarefas", "Index", "LinhaDeTarefas", new { area = "" }, new { @class = "navbar-brand" })</li>
+
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -44,6 +45,18 @@
                             <li>@Html.ActionLink("D - Apagar tarefas por id", "Index", "ApagaRegistos", new { area = "" }, new { @class = "navbar-brand" })</li>
                             <li>@Html.ActionLink("E - Apagar tarefas por id c/ confirmação", "Index", "ApagarRegistosComConfirmacao", new { area = "" }, new { @class = "navbar-brand" })</li>
                             <li>@Html.ActionLink("F - Contar registos", "Index", "ContaRegistos", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("G - Listar tarefas do func. do mês actual", "Index", "F_TarefasFuncs_Mes", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("X - Listar tarefas do cliente, por urgencia e datas", "Index", "F_ClientePorUrgencia", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toogle" data-toggle="dropdown" href="#">Produção <span class="caret"></span></a>
+                        <ul class="dropdown-menu navbar-inverse">
+                            <li>@Html.ActionLink("A", "Index", "FiltrarTarefas", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("B", "Index", "FiltrarLinhasDeTarefa", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("C", "Index", "FiltrarClienteFunc", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("D", "Index", "ApagaRegistos", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("E", "Index", "ApagarRegistosComConfirmacao", new { area = "" }, new { @class = "navbar-brand" })</li>
                         </ul>
                     </li>
                 </ul>
