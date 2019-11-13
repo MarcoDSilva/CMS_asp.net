@@ -16,6 +16,16 @@
     }
 </table>
 
+<div>
+    @using (Html.BeginForm())
+    {
+
+        <label>Data inicial: </label> <input type="date" name="data_inicio" value="" id="data_inicio" />
+        <label>Data final </label> <input type="date" name="data_final" value="" id="data_final" />
+        <input type="submit" value="Pesquisar">
+    }
+</div>
+
 <table class="table table-bordered">
     <tr>
         <th>Nome Cliente</th>
@@ -23,6 +33,7 @@
         <th>Descritivo</th>
         <th>ID Tarefa</th>
         <th>Titulo Tarefa</th>
+        <th>Data Limite</th>
         <th>Urgencia</th>
     </tr>
 
@@ -34,7 +45,8 @@
             <td>@tarefa.DescritivoTarefa</td>
             <td>@tarefa.ID</td>
             <td>@tarefa.Titulo</td>
+            <td>@tarefa.DataLimite</td>
             <td>Urgente</td>
         </tr>
-    }
+        }
 </table>

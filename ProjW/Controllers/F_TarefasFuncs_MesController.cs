@@ -15,16 +15,15 @@ namespace ProjW.Controllers
         // GET: F_TarefasFuncs_Mes
         public ActionResult Index(int? id)
         {
-            var viewModel = new FuncionarioTarefas();
-
-            viewModel.Funcionarios = db.TFuncionarios;
-            viewModel.Tarefas = db.TTarefas;
+            var viewModel = new FuncionarioTarefas();            
 
             if(id == null)  {
                 ViewBag.id = 0;
             } else  {
                 ViewBag.id = id;
             }
+            viewModel.Funcionarios = db.TFuncionarios;
+            viewModel.Tarefas = db.TTarefas.Where(a => a.DataLimite.Month == DateTime.Now.Month && a.DataLimite.Year == DateTime.Now.Year);
 
             return View(viewModel);
         }
