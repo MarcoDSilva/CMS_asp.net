@@ -140,6 +140,10 @@
     <Compile Include="Controllers\F_TarefasFuncs_MesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinhaDeTarefasController.cs" />
+    <Compile Include="Controllers\ProducaoExercicioAController.cs" />
+    <Compile Include="Controllers\ProducaoExercicioBController.cs" />
+    <Compile Include="Controllers\ProducaoExercicioCController.cs" />
+    <Compile Include="Controllers\ProducaoExercicioDController.cs" />
     <Compile Include="Controllers\TarefasController.cs" />
     <Compile Include="Controllers\TipoPrioridadesController.cs" />
     <Compile Include="Controllers\TipoTarefasController.cs" />
@@ -174,6 +178,7 @@
     <Compile Include="MyUtil\StringConnection.cs" />
     <Compile Include="MyUtil\TarefasFuncs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ClientesTarefas.cs" />
     <Compile Include="ViewModel\ClienteTarefas.cs" />
     <Compile Include="ViewModel\FuncionarioTarefas.cs" />
   </ItemGroup>
@@ -235,6 +240,10 @@
     <Content Include="Views\ContaRegistos\Index.cshtml" />
     <Content Include="Views\F_TarefasFuncs_Mes\Index.cshtml" />
     <Content Include="Views\F_ClientePorUrgencia\Index.cshtml" />
+    <Content Include="Views\ProducaoExercicioA\Index.cshtml" />
+    <Content Include="Views\ProducaoExercicioB\Index.cshtml" />
+    <Content Include="Views\ProducaoExercicioC\Index.cshtml" />
+    <Content Include="Views\ProducaoExercicioD\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

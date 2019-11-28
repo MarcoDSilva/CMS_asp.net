@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    #drop1 {
+        float:left;  
+    }
+ 
+</style>
+
+<h2>Producao Exercicio B</h2>
+<h5>Filtra as tarefas por prioridade e tipo tarefa</h5>
+
+@using (Html.BeginForm())
+{
+    <div id="drops">
+        <div id="drop1">
+            <label>Tipo Tarefa</label>
+            @Html.DropDownList("idTipoTarefa", (SelectList)ViewBag.tarefas,
+                htmlAttributes: new { @class = "form-control", onchange = "this.form.submit();" })
+        </div>
+
+        <div id="drop2">
+            <label>Tipo Prioridade</label>
+            @Html.DropDownList("idTipoPrioridade", (SelectList)ViewBag.prioridades,
+                htmlAttributes: new { @class = "form-control", onchange = "this.form.submit();" })
+        </div>        
+    </div>
+
+    <p>Existem @ViewBag.quantidade tarefas nessa situação.</p>
+    
+}
+
+
+

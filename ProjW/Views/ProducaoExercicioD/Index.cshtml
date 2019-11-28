@@ -1,0 +1,42 @@
+﻿@model ProjW.ViewModel.ClientesTarefas
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Producao Exercicio D</h2>
+<h5>Listar Clientes</h5>
+
+<div>
+    @foreach (var item in Model.Clientes)
+    {
+        <div>
+            <span>@Html.ActionLink(@item.NomeCliente, "Index", new { id = item.Id })</span>
+        </div>
+    }
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Titulo Tarefa</th>
+        <th>Codigo Cliente</th>
+    </tr>
+
+    @foreach (var tarefa in Model.Tarefas)
+    {
+        if (tarefa.ClienteId == @ViewBag.id)
+        {
+            <tr>
+                <td>@tarefa.ID</td>
+                <td>@tarefa.Titulo</td>
+                <td>@tarefa.ClienteId</td>
+            </tr>
+        }
+    }
+</table>
+
+
+
+
+

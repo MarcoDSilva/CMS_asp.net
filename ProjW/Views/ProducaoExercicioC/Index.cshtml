@@ -1,0 +1,125 @@
+﻿@model IEnumerable<ProjW.Models.Tarefa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Producao Exercicio C</h2>
+<h5>Filtra Tarefas por Cliente/Funcionário por id Crescente ou Decrescente</h5>
+
+<style>
+    #drop1 {
+        float:left;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+<div id="drops">
+    <div id="drop1">
+        <label>Cliente:</label>
+        @Html.DropDownList("idDropCliente", (SelectList)ViewBag.Clientes,
+            htmlAttributes: new { @class = "form-control", @onchange = "this.form.submit();" })
+    </div>
+    <div id="drop2">
+        <label>Funcionário: </label>
+        @Html.DropDownList("idDropFuncionario", (SelectList)ViewBag.Funcionarios,
+            htmlAttributes: new { @class = "form-control", @onchange = "this.form.submit();" })
+    </div>
+</div>
+
+<div>
+        <p>@Html.RadioButton("ordena", "crescente" , htmlAttributes: new { @onchange = "this.form.submit();" }) 
+            <label>Crescente</label>
+        </p>
+
+        <p>@Html.RadioButton("ordena", "decrescente",  htmlAttributes: new { @onchange = "this.form.submit();" }) 
+            <label>Decrescente</label>
+        </p>
+</div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.NomeCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Funcionario.NomeFuncionario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoPrioridade.DesignacaoPrioridade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoTarefa.DesignacaoTipoTarefa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescritivoTarefa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataRegisto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataLimite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SujeitaCoima)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.NomeCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.NomeFuncionario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPrioridade.DesignacaoPrioridade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoTarefa.DesignacaoTipoTarefa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescritivoTarefa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRegisto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLimite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SujeitaCoima)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
