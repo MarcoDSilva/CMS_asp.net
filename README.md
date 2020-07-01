@@ -1,8 +1,4 @@
-# Learning_aspNet
+# CMS_asp.net
 
-ProjW, an exercise where we applied MVC methods with .NET and the Entity Framework to take care of the database.
-
-In this I learned how to use Views(Razor and viewbags), Models and Controllers, as well as ViewModels.
-
-Mostly is a program that has jobs being done by employees to solve the clients problems. Each has a priority type, a type of job and a description of said job.
+A basic CMS Project, where the purpose was to learn about .NET, C#, linq and sql with Entity Framework and MVC pattern.
 
